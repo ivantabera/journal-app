@@ -10,7 +10,7 @@ export const LoginScreen = () => {
 
                 <input 
                     type="text"
-                    placeholder="Cmail"
+                    placeholder="Email"
                     name="email"
                     className="auth__input"
                     autoComplete="off"
