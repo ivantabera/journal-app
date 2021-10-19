@@ -1,5 +1,5 @@
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -18,6 +18,10 @@ export const AppRouter = () => {
 
     const dispatch = useDispatch();
 
+    const [checking, setChecking] = useState(true);
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     useEffect(() => {
 
         const auth = getAuth();
@@ -27,10 +31,21 @@ export const AppRouter = () => {
             if(user?.uid){
 
                 dispatch( login( user.uid, user.displayName ));
+                setIsLoggedIn(true);
+            } else{
+                setIsLoggedIn(false);
             }
+
+            setChecking(false);
         });
 
-    }, [dispatch]);
+    }, [dispatch, setChecking, setIsLoggedIn ]);
+
+    if( checking ) {
+        return (
+            <h1>Espere...</h1>
+        )
+    }
 
     return (
         <Router>
