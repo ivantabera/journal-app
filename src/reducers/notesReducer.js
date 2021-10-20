@@ -17,12 +17,9 @@ const initialState = {
     active: null
 }
 
-export const notesReducer = (state, action) => {
+export const notesReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case value:
-            
-            break;
     
         default:
             return state;
