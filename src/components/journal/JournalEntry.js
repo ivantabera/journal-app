@@ -1,29 +1,47 @@
 import React from 'react'
+import moment from 'moment';
+import { activeNote } from '../../actions/notes';
+import { useDispatch } from 'react-redux';
 
-export const JournalEntry = () => {
+export const JournalEntry = ( { id, date, title, body, url } ) => {
+
+    const noteDate = moment( date );
+    const dispatch = useDispatch();
+
+    const handleEntryClick = () => {
+        
+        dispatch( activeNote( id, { date, title, body, url } ) );
+    }
+
     return (
-        <div className="journal__entry pointer">
+        <div 
+            className="journal__entry pointer"
+            onClick= { handleEntryClick }
+        >
             
-            <div 
-                className="journal__entry-picture"
-                style={{
-                    backgroundSize:'cover',
-                    backgroundImage:'url(https://img.vixdata.io/pd/webp-large/es/sites/default/files/l/los_momentos_en_los_que_vegeta_lloro.jpg)'
-                }}
-            ></div>
+            {
+                url &&
+                <div 
+                    className="journal__entry-picture"
+                    style={{
+                        backgroundSize:'cover',
+                        backgroundImage:`url(${ url })`
+                    }}
+                ></div>
+            }
 
             <div className="journal__entry-body">
                 <p className="journal__entry-title">
-                    Un nuevo día
+                    { title }
                 </p>
                 <p className="journal__entry-content">
-                    Deserunt est nostrud eiusmod elit labore duis commodo eu nostrud ut consectetur do esse elit.
+                    { body }
                 </p>
             </div>
 
             <div className="journal__entry-date-box">
-                <span>Monday</span>
-                <h4>28</h4>
+                <span>{ noteDate.format('dddd') }</span>
+                <h4>{ noteDate.format('D') }</h4>
             </div>
 
         </div>
