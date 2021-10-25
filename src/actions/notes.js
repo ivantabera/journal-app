@@ -59,5 +59,18 @@ export const startSaveNote = ( note ) => {
         const noteRef = doc(db, `${uid}/journal/notes/${note.id}`)
         await updateDoc(noteRef,noteToFirestore);
 
+        dispatch( refreshNote(note.id, note ) );
+
     }
 }
+
+export const refreshNote = ( id, note ) => ({
+    type: types.notesUpdated,
+    payload: {
+        id, 
+        note: {
+            id,
+            ...note
+        }
+    }
+})
