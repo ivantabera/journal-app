@@ -2,6 +2,7 @@ import { db } from "../firebase/firebase-config";
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import { types } from "../types/types";
 import { loadNotes } from "../helpers/loadNotes";
+import Swal from "sweetalert2";
 
 export const startNewNote = () => {
     return async( dispatch, getState ) => {
@@ -60,6 +61,7 @@ export const startSaveNote = ( note ) => {
         await updateDoc(noteRef,noteToFirestore);
 
         dispatch( refreshNote(note.id, note ) );
+        Swal.fire('Save', note.title, 'success');
 
     }
 }
