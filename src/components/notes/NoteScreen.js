@@ -52,19 +52,22 @@ export const NoteScreen = () => {
                     onChange={ handleInputChange }
                 ></textarea>
 
+            
+
+
+                {   (note.url ) 
+                        &&(
+                            <div className="notes__image">
+                                <img 
+                                    src={note.url}
+                                    alt="imagen"
+                                    onChange={ handleInputChange }
+                                />
+                            </div>
+                        )
+                }
             </div>
-
-
-            {   (note.url ) &&
-                <div className="notes__image">
-                    <img 
-                        src={note.url}
-                        alt="imagen"
-                        onChange={ handleInputChange }
-                    />
-                </div>
-            }
-
+            
         </div>
     )
 }
