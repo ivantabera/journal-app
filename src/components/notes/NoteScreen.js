@@ -58,11 +58,13 @@ export const NoteScreen = () => {
             {   (note.url ) &&
                 <div className="notes__image">
                     <img 
-                        src="https://img.vixdata.io/pd/webp-large/es/sites/default/files/l/los_momentos_en_los_que_vegeta_lloro.jpg"
+                        src={note.url}
                         alt="imagen"
+                        onChange={ handleInputChange }
                     />
                 </div>
             }
+            {console.log('note.url', note.url)}
 
         </div>
     )
