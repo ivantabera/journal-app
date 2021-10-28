@@ -64,7 +64,6 @@ export const NoteScreen = () => {
                     />
                 </div>
             }
-            {console.log('note.url', note.url)}
 
         </div>
     )

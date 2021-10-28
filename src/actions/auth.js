@@ -22,7 +22,6 @@ export const startLoginEmailPassword = (email, password) => {
 
         } )
         .catch( e => {
-            console.log( e );
             dispatch( finishLoading() );
             Swal.fire(
                 'error',
@@ -49,7 +48,6 @@ export const starRegisterWithEmailPasswordName = ( email, password, name ) => {
 
         })
         .catch( e => {
-            console.log( e );
             Swal.fire(
                 'error',
                 e.message,
