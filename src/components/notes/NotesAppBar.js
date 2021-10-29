@@ -21,6 +21,7 @@ export const NotesAppBar = () => {
         if (file) {
             dispatch( startUploading(file) );
         }
+        document.querySelector('#fileSelector').value = '';
     }
 
     return (
